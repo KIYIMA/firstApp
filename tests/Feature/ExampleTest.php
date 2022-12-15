@@ -14,8 +14,10 @@ class ExampleTest extends TestCase
      */
     public function test_the_application_returns_a_successful_response()
     {
+        //Simula una peticion HTTP con la ruta "/"
         $response = $this->get('/');
 
+        //La solicitud debe devolver un estado 200.
         $response->assertStatus(200);
     }
 }

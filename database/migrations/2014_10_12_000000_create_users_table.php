@@ -14,12 +14,18 @@ return new class extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->string('email')->unique();
+            $table->id();// Enteros sin signo y autoincrementable
+
+            $table->unsignedInteger('profession_id');
+            $table->foreign('profession_id')->references('id')->on('professions');
+
+            $table->string('name'); // Varchar
+            $table->string('email')->unique(); // Varchar y es unica
+            //$table->string('profession', 100)->nullable(); // El 100 indica la cantidad de caracteres maximos que puede tener ese campo
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->rememberToken();
+            
+            $table->rememberToken(); 
             $table->timestamps();
         });
     }
