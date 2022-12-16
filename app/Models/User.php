@@ -40,5 +40,22 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'is_admin' => 'boolean',
     ];
+
+    public function isAdmin()
+    {
+        return $this->is_admin;
+    }
+
+    public static function findbyEmail($email)
+    {
+        //static es lo mismo que coloque User:: , ya que me encuentro dentro de la clase User
+        return static::where(compact('email'))->first();
+    }
+    public function profession()
+    {
+        //Devuelve el registro al cual está relaionado el usuario solicitado
+        return $this->belongsTo(Profession::class);
+    }
 }

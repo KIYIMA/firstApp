@@ -29,3 +29,10 @@ Route::get('/usuarios/nuevo',[UserController::class, 'create'] );
 
 //Con el "?" le digo que si no manda el parametro igual ejecute la funcion
 Route::get('/saludo/{name}/{nickname?}', [WelcomeUserController::class, 'index']);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -16,12 +16,9 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();// Enteros sin signo y autoincrementable
 
-            $table->unsignedInteger('profession_id');
-            $table->foreign('profession_id')->references('id')->on('professions');
-
+            $table->boolean('is_admin')->default(false);
             $table->string('name'); // Varchar
             $table->string('email')->unique(); // Varchar y es unica
-            //$table->string('profession', 100)->nullable(); // El 100 indica la cantidad de caracteres maximos que puede tener ese campo
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             
